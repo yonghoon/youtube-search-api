@@ -4,7 +4,7 @@ import { NextPage, YoutubeSearchApi } from ".."
 const api = new YoutubeSearchApi()
 
 async function test() {
-  let searchOutput = await api.search("JSDeveloper", true, 2, [{ type: "video" }])
+  let searchOutput = await api.search("cat", true, 2, [{ type: "video" }])
   console.log("init_search", searchOutput)
 
   let round = 0

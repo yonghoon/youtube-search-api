@@ -2,15 +2,14 @@
   "name": "youtube-search-api-ts",
   "version": "1.2.2",
   "description": "typescript version of youtube-search-api. Node.js easy to get Youtube results with playlist by provided keywords, no Login or API key required!",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "npx tsc",
-    "dev": "npx tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/damonwonghv/youtube-search-api.git"
+    "url": "git+https://github.com/yonghoon/youtube-search-api-ts.git"
   },
   "keywords": [
     "Youtube",
@@ -30,9 +29,9 @@
   "author": "yonghoon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/damonwonghv/youtube-search-api/issues"
+    "url": "https://github.com/yonghoon/youtube-search-api-ts/issues"
   },
-  "homepage": "https://github.com/damonwonghv/youtube-search-api#readme",
+  "homepage": "https://github.com/yonghoon/youtube-search-api-ts#readme",
   "dependencies": {
     "@types/lodash": "^4.17.10",
     "axios": "^0.21.0",
