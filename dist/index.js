@@ -428,15 +428,3 @@ class YoutubeSearchApi {
     }
 }
 exports.YoutubeSearchApi = YoutubeSearchApi;
-function test() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const api = new YoutubeSearchApi();
-        const output = yield api.search("고양이", false, 10);
-        console.log("##### search", JSON.stringify(output, null, 4));
-        if (output.nextPage) {
-            const nextPage = yield api.getNextPage(output.nextPage);
-            console.log("##### nextPage", JSON.stringify(nextPage, null, 4));
-        }
-    });
-}
-test();
