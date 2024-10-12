@@ -16,7 +16,7 @@ export interface NextPage {
 }
 
 export interface SearchOutput {
-  items: VideoRender[]
+  items: Video[]
   nextPage?: NextPage
 }
 
@@ -47,7 +47,7 @@ export interface PlaylistData {
   metadata: any
 }
 
-export interface VideoRender {
+export interface Video {
   id?: string
   type?: string
   thumbnail?: string
@@ -159,7 +159,7 @@ export class YoutubeSearchApi {
 
       let contToken = {}
 
-      let items: VideoRender[] = []
+      let items: Video[] = []
 
       await contents.forEach((content) => {
         const token = _.get(content, "continuationItemRenderer.continuationEndpoint.continuationCommand.token")
@@ -232,7 +232,7 @@ export class YoutubeSearchApi {
       )
       const item1 =
         page.data.onResponseReceivedCommands[0].appendContinuationItemsAction
-      let items: VideoRender[] = []
+      let items: Video[] = []
       item1.continuationItems.forEach((conitem: any) => {
         if (conitem.itemSectionRenderer) {
           conitem.itemSectionRenderer.contents.forEach(async (content: any) => {
@@ -381,7 +381,7 @@ export class YoutubeSearchApi {
     }
   }
 
-  async getVideoRender(json: any): Promise<VideoRender> {
+  async getVideoRender(json: any): Promise<Video> {
     try {
       if (json && (json.videoRenderer || json.playlistVideoRenderer)) {
         let videoRenderer = null
@@ -490,15 +490,3 @@ export class YoutubeSearchApi {
     }))
   }
 }
-
-async function test() {
-  const api = new YoutubeSearchApi()
-  const output = await api.search("고양이", false, 10)
-  console.log("##### search", JSON.stringify(output, null, 4))
-  if (output.nextPage) {
-    const nextPage = await api.getNextPage(output.nextPage)
-    console.log("##### nextPage", JSON.stringify(nextPage, null, 4))
-  }
-}
-
-test()
