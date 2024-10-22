@@ -370,11 +370,12 @@ export class YoutubeSearchApi {
         channelId: playerData.channelId,
         description: playerData.shortDescription,
         keywords: playerData.keywords,
-        suggestion: result.secondaryResults.secondaryResults.results
-          .filter((y: any) => y.hasOwnProperty("compactVideoRenderer"))
-          .map((x: any) => this.getCompactVideoRenderer(x))
+        suggestion: await Promise.all(
+          result.secondaryResults.secondaryResults.results
+            .filter((y: any) => y.hasOwnProperty("compactVideoRenderer"))
+            .map((x: any) => this.getCompactVideoRenderer(x))
+        )
       }
-
       return await Promise.resolve(res)
     } catch (ex) {
       return await Promise.reject(ex)

@@ -309,9 +309,9 @@ class YoutubeSearchApi {
                     channelId: playerData.channelId,
                     description: playerData.shortDescription,
                     keywords: playerData.keywords,
-                    suggestion: result.secondaryResults.secondaryResults.results
+                    suggestion: yield Promise.all(result.secondaryResults.secondaryResults.results
                         .filter((y) => y.hasOwnProperty("compactVideoRenderer"))
-                        .map((x) => this.getCompactVideoRenderer(x))
+                        .map((x) => this.getCompactVideoRenderer(x)))
                 };
                 return yield Promise.resolve(res);
             }

@@ -15,6 +15,9 @@ async function test() {
     nextPage = searchOutput.nextPage
     round++
   }
+
+  const details = await api.getVideoDetails("XqKA5IwST9Q")
+  console.log("details", details)
 }
 
 test()

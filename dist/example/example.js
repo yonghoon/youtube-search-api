@@ -27,6 +27,8 @@ function test() {
             nextPage = searchOutput.nextPage;
             round++;
         }
+        const details = yield api.getVideoDetails("XqKA5IwST9Q");
+        console.log("details", details);
     });
 }
 test();
