@@ -313,10 +313,13 @@ class YoutubeSearchApi {
                         .filter((y) => y.hasOwnProperty("compactVideoRenderer"))
                         .map((x) => this.getCompactVideoRenderer(x)))
                 };
-                return yield Promise.resolve(res);
+                // This is to work around the following error in browsers:
+                //  SyntaxError: Unexpected non-whitespace character after JSON at position 123352 (line 1 column 123353)
+                return JSON.parse(JSON.stringify(res));
             }
-            catch (ex) {
-                return yield Promise.reject(ex);
+            catch (error) {
+                console.log("getVideoDetails error", error);
+                throw error;
             }
         });
     }

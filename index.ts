@@ -376,9 +376,12 @@ export class YoutubeSearchApi {
             .map((x: any) => this.getCompactVideoRenderer(x))
         )
       }
-      return await Promise.resolve(res)
-    } catch (ex) {
-      return await Promise.reject(ex)
+      // This is to work around the following error in browsers:
+      //  SyntaxError: Unexpected non-whitespace character after JSON at position 123352 (line 1 column 123353)
+      return JSON.parse(JSON.stringify(res))
+    } catch (error) {
+      console.log("getVideoDetails error", error)
+      throw error
     }
   }
 
