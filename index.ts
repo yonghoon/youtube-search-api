@@ -97,9 +97,9 @@ export class YoutubeSearchApi {
         console.error("cannot_get_init_data")
         return await Promise.reject("cannot_get_init_data")
       }
-    } catch (ex) {
-      await console.error(ex)
-      throw ex
+    } catch (error) {
+      console.error("getYoutubeInitData error", error)
+      throw error
     }
   }
 
@@ -117,9 +117,9 @@ export class YoutubeSearchApi {
         console.error("cannot_get_player_data")
         return await Promise.reject("cannot_get_player_data")
       }
-    } catch (ex) {
-      await console.error(ex)
-      return await Promise.reject(ex)
+    } catch (error) {
+      console.error("getYoutubePlayerDetail error", error)
+      throw error
     }
   }
 

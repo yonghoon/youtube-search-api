@@ -45,9 +45,9 @@ class YoutubeSearchApi {
                     return yield Promise.reject("cannot_get_init_data");
                 }
             }
-            catch (ex) {
-                yield console.error(ex);
-                throw ex;
+            catch (error) {
+                console.error("getYoutubeInitData error", error);
+                throw error;
             }
         });
     }
@@ -67,9 +67,9 @@ class YoutubeSearchApi {
                     return yield Promise.reject("cannot_get_player_data");
                 }
             }
-            catch (ex) {
-                yield console.error(ex);
-                return yield Promise.reject(ex);
+            catch (error) {
+                console.error("getYoutubePlayerDetail error", error);
+                throw error;
             }
         });
     }
